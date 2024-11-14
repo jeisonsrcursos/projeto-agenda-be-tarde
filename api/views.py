@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from api.models import Pessoa
+from api.serializers import PessoaSerializer
+
+
+class ListarCriarPessoaView(generics.ListCreateAPIView):
+    queryset = Pessoa.objects.all()
+    serializer_class = PessoaSerializer
